@@ -18,7 +18,8 @@ print("Hello Algoritmos")
 
 ## Información de la asignatura
 
-- Estudiante: Isabella Bermudez Arboleda
-- Docente: Santiago Suarez Cortes
-- Facultad: Ingeniería
-- Semestre: 2026-2
+- **Estudiante**: Isabella Bermudez Arboleda
+- **Correo de estudiante**: Isabellabermudez1117114@correo.itm.edu.co
+- **Docente**: Santiago Suarez Cortes
+- **Facultad**: Ingeniería
+- **Semestre**: 2026-2
