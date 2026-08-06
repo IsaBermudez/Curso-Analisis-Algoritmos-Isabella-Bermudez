@@ -9,7 +9,7 @@ Repositorio apra eld esarrollo de los ejercicios y laboratorios del curso de Ana
 * **ejercicios-clases**: Ejercicios desarrollados durante la clase
 * **laboratorios**: Almacena los laboratorios evaluativos del curso
 * **README.md**: Documentacion del repositorio, informacion de la asignarura y plantilla para los informes
-* **.girignore**: Define los archivos y carpetas que Git no debe incluir ni versionar
+* **.gitignore**: Define los archivos y carpetas que Git no debe incluir ni versionar
 
 ## Bloque de codigo en python
 ```
@@ -18,7 +18,7 @@ print("Hello Algoritmos")
 
 ## Información de la asignatura
 
-Estudiante: Isabella Bermudez Arboleda
-Docente: Santiago Suarez Cortes
-Facultad: Ingeniería
-Semestre: 2026-2
+- Estudiante: Isabella Bermudez Arboleda
+- Docente: Santiago Suarez Cortes
+- Facultad: Ingeniería
+- Semestre: 2026-2
