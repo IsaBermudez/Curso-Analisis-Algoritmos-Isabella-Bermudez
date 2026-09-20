@@ -97,7 +97,7 @@ Al comparar estos resultados con mi predicción inicial, se puede decir que fue 
 También se puede notar algo importante en la gráfica de comparaciones: cuando aumenta el tamaño de los datos, la diferencia entre los escenarios se vuelve mucho más grande. Esto es especialmente visible entre B y C, ya que mientras B aumenta de manera mucho más lenta, C pasa de 4.950 comparaciones con 100 elementos a más de 20 millones con 6.400 elementos.
 
 ### Parte 4 — Complejidad de merge sort e insertion sort: cálculo y validación
-
+Código de esta parte: [parte4_complejidad.py](parte4_complejidad.py). Este script usa las funciones `insertion_sort` y `merge_sort` de [algoritmos.py](algoritmos.py).
 ## 4.1 — Cálculo teórico
 
 # Merge Sort
