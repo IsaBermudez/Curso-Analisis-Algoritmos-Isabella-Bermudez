@@ -1,6 +1,8 @@
 """Experimento de los tres escenarios de Tamiza para el Laboratorio 1."""
 
 import time
+from pathlib import Path
+
 from matplotlib.ticker import FuncFormatter
 import matplotlib.pyplot as plt
 
@@ -14,6 +16,7 @@ from datos import (
 
 tamaños = [100, 200, 400, 800, 1600, 3200, 6400]
 semilla = 42
+CARPETA_GRAFICAS = Path(__file__).parent / "graficas"
 
 
 def ejecutar():
@@ -85,7 +88,7 @@ def generar_grafica_comparaciones(resultados):
     plt.legend()
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig("graficas/parte3_comparaciones.png")
+    plt.savefig(CARPETA_GRAFICAS / "parte3_comparaciones.png")
     plt.close()
 
 
@@ -113,7 +116,7 @@ def generar_grafica_tiempo(resultados):
     plt.legend()
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig("graficas/parte3_tiempo.png")
+    plt.savefig(CARPETA_GRAFICAS / "parte3_tiempo.png")
     plt.close()
 
 

@@ -1,6 +1,7 @@
 """Comparacion experimental de Insertion Sort y Merge Sort."""
 
 import time
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 
@@ -10,6 +11,7 @@ from datos import generar_aleatorio
 
 tamaño_prueba = [100, 200, 400, 800, 1600, 3200, 6400]
 semilla_datos = 42
+CARPETA_GRAFICAS = Path(__file__).parent / "graficas"
 
 
 def medir_tiempo(funcion, entrada):
@@ -99,7 +101,7 @@ def crear_grafica(tiempos_insertion, tiempos_merge):
     plt.grid(True)
     plt.tight_layout()
 
-    plt.savefig("graficas/parte4_tiempo.png")
+    plt.savefig(CARPETA_GRAFICAS / "parte4_tiempo.png")
     plt.close()
 
 
