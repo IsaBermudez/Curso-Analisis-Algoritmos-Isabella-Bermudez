@@ -59,6 +59,8 @@ def ejecutar():
             resultados[nombre]["comparaciones"].append(comparaciones)
 
     return resultados
+
+
 def generar_grafica_comparaciones(resultados):
     """Genera la grafica de comparaciones contra tamaño de entrada.
 
