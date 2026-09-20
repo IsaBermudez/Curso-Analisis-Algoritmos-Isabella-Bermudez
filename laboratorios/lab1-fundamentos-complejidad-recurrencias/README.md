@@ -76,3 +76,98 @@ Al comparar estos resultados con mi predicción inicial, se puede decir que fue 
 
 También se puede notar algo importante en la gráfica de comparaciones: cuando aumenta el tamaño de los datos, la diferencia entre los escenarios se vuelve mucho más grande. Esto es especialmente visible entre B y C, ya que mientras B aumenta de manera mucho más lenta, C pasa de 4.950 comparaciones con 100 elementos a más de 20 millones con 6.400 elementos.
 
+### Parte 4 — Complejidad de merge sort e insertion sort: cálculo y validación
+
+## 4.1 — Cálculo teórico
+
+# Merge Sort
+
+Merge Sort trabaja dividiendo el problema original en partes cada vez más pequeñas. Si tenemos una entrada de tamaño n, en cada nivel se generan dos problemas de aproximadamente n/2. Después de resolverlos, las dos partes deben combinarse y este último proceso requiere recorrer los elementos involucrados.
+
+Por esta razón, la recurrencia que representa el algoritmo es:
+
+T(n) = 2T(n/2) + Θ(n)
+
+El primer término representa las dos llamadas recursivas sobre problemas de tamaño n/2, mientras que Θ(n) corresponde al trabajo realizado al combinar las dos partes.
+
+Para resolverla utilizo el método maestro, donde la forma corresponde a:
+
+T(n) = aT(n/b) + f(n)
+
+En este caso se identifican los siguientes valores:
+
+- a = 2
+- b = 2
+- f(n) = Θ(n)
+
+Ahora se calcula:
+
+n^(log_b a)
+
+por lo que:
+
+n^(log_2 2) = n
+
+Al comparar este resultado con f(n) se obtiene:
+
+f(n) = Θ(n)
+
+y
+
+n^(log_b a) = n
+
+Ambos términos tienen el mismo orden de crecimiento, por lo que se cumple la condición correspondiente al caso 2 del método maestro. Al aplicar este resultado se obtiene:
+
+T(n) = Θ(n log n)
+
+Por lo tanto, el costo temporal de Merge Sort es Θ(n log n).
+
+## Insertion Sort
+
+En el caso de Insertion Sort, el comportamiento depende bastante del orden en que llegan los datos. Para analizar el peor caso, supongamos que necesitamos ordenar de mayor a menor y recibimos:
+
+[1, 2, 3, 4, 5]
+
+Cada nuevo elemento debe compararse con todos los elementos que ya se encuentran en la parte ordenada y, además, estos elementos deben desplazarse para dejar espacio.
+
+La primera iteración puede realizar una comparación, la siguiente puede realizar dos, después tres y así sucesivamente. Por eso el número de comparaciones puede representarse como:
+
+1 + 2 + 3 + ... + (n - 1)
+
+Esta suma corresponde a:
+
+n(n - 1) / 2
+
+y al desarrollarla:
+
+(n² - n) / 2
+
+El término que domina cuando n aumenta es n², por lo que el peor caso queda como:
+
+T(n) = Θ(n²)
+
+Para relacionar este resultado con la implementación utilizada, se puede observar el comportamiento de sus principales instrucciones:
+
+| Instrucción               | Ejecuciones/costo en el peor caso |
+|---------------------------|-----------------------------------|
+| datos.copy()              | Se copian n elementos             |
+| for                       | n - 1 iteraciones                 |
+| clave = copia[i]          | n - 1 veces                       |
+| j = i - 1                 | n - 1 veces                       |
+| comparaciones += 1        | n(n - 1) / 2 veces                |
+| if copia[j] >= clave      | n(n - 1) / 2 veces                |
+| copia[j + 1] = copia[j]   | n(n - 1) / 2 veces                |
+| j -= 1                    | n(n - 1) / 2 veces                |
+| copia[j + 1] = clave      | n - 1 veces                       |
+
+Aunque algunas instrucciones tienen un costo constante y otras se ejecutan de forma lineal, las operaciones que se repiten n(n - 1) / 2 veces son las que terminan determinando el crecimiento. Por esto, el peor caso de Insertion Sort es cuadrático.
+
+# Comparación de complejidades
+
+| Algoritmo      | Mejor caso   | Caso promedio | Peor caso  |
+|----------------|--------------|---------------|------------|
+| Insertion Sort | Θ(n)         | Θ(n²)         | Θ(n²)      |
+| Merge Sort     | Θ(n log n)   | Θ(n log n)    | Θ(n log n) |
+
+La diferencia principal es que Insertion Sort puede aprovechar una entrada que ya se encuentre ordenada y en ese caso su comportamiento es lineal. Sin embargo, cuando debe realizar muchos desplazamientos, el número de operaciones crece cuadráticamente. Merge Sort, en cambio, conserva Θ(n log n) independientemente del caso analizado.
+
