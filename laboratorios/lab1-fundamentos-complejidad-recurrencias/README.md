@@ -1,5 +1,25 @@
 #### Isabella Bermúdez Arboleda
 
+### Instrucciones para reproducir el experimento
+
+Para correr este laboratorio primero hay que activar el entorno virtual que está en la raíz del repositorio. Desde la raíz del repo:
+
+- En PowerShell: `.\venv\Scripts\Activate.ps1`
+
+Cuando quede activado debe aparecer `(venv)` al inicio de la línea de comandos. Con eso ya se tiene matplotlib instalado (queda registrado en `requirements.txt` en la raíz), así que no hay que instalar nada más.
+
+Luego hay que entrar a esta carpeta:
+
+```
+cd laboratorios/lab1-fundamentos-complejidad-recurrencias
+```
+
+Y desde ahí correr cada script según la parte que se quiera reproducir:
+
+- Parte 3 (comparaciones y tiempos de Insertion Sort en los tres escenarios de Tamiza): `python parte3_casos.py`
+- Parte 4 (comparación de tiempo entre Insertion Sort y Merge Sort): `python parte4_complejidad.py`
+
+Cada script imprime los resultados directamente en la terminal y guarda las gráficas correspondientes en la carpeta `graficas/`.
 
 
 ### Parte 1 — Analizar el algoritmo antes de comprar hardware
