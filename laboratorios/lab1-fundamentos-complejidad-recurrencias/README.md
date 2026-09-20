@@ -58,9 +58,7 @@ El escenario C corresponde a el peor de los casos ya que los datos vienen en el 
 
 ## 3.2 — Demostración experimental
 
-![Comparaciones de Insertion Sort por escenario](graficas/parte3_comparaciones.png)
 
-![Tiempo de ejecución de Insertion Sort por escenario](graficas/parte3_tiempo.png)
 
 # Análisis de los resultados
 
@@ -122,7 +120,7 @@ T(n) = Θ(n log n)
 
 Por lo tanto, el costo temporal de Merge Sort es Θ(n log n).
 
-## Insertion Sort
+# Insertion Sort
 
 En el caso de Insertion Sort, el comportamiento depende bastante del orden en que llegan los datos. Para analizar el peor caso, supongamos que necesitamos ordenar de mayor a menor y recibimos:
 
@@ -171,3 +169,20 @@ Aunque algunas instrucciones tienen un costo constante y otras se ejecutan de fo
 
 La diferencia principal es que Insertion Sort puede aprovechar una entrada que ya se encuentre ordenada y en ese caso su comportamiento es lineal. Sin embargo, cuando debe realizar muchos desplazamientos, el número de operaciones crece cuadráticamente. Merge Sort, en cambio, conserva Θ(n log n) independientemente del caso analizado.
 
+## 4.2 — Validación experimental
+
+# Análisis de los resultados
+
+Al comparar los tiempos obtenidos para los dos algoritmos, al principio la diferencia no parece ser tan grande. Esto se puede ver en los primeros tamaños, donde los tiempos de Insertion Sort y Merge Sort todavía están relativamente cerca. Sin embargo, a medida que aumenta la cantidad de datos, la diferencia empieza a ser mucho más evidente.
+
+Para `n = 6400`, Insertion Sort tuvo un tiempo de aproximadamente 2,24 segundos, mientras que Merge Sort tardó aproximadamente 0,040 segundos. Es una diferencia bastante grande si tenemos en cuenta que ambos algoritmos recibieron los mismos datos del escenario A.
+
+En la gráfica también se puede observar que la curva de Insertion Sort aumenta mucho más rápido que la de Merge Sort. Por ejemplo, Insertion Sort pasó de aproximadamente 0,00045 segundos con 100 elementos a más de 2 segundos con 6400 elementos. Merge Sort, en cambio, pasó de aproximadamente 0,00029 segundos a 0,040 segundos en el mismo rango.
+
+Esto muestra que el aumento del tamaño de los datos afecta mucho más a Insertion Sort. Aunque para cantidades pequeñas los dos algoritmos pueden tener tiempos parecidos, cuando la cantidad de registros empieza a crecer la diferencia se vuelve cada vez más importante.
+
+Para el caso de Tamiza, los resultados de esta prueba muestran que Merge Sort tiene un comportamiento más favorable frente al crecimiento de los datos. Esto es especialmente importante porque el sistema puede recibir una cantidad grande de registros y no podemos asumir que siempre van a llegar casi ordenados.
+
+El resultado también coincide con lo calculado en la sección 4.1. Allí obtuvimos que Insertion Sort tiene una complejidad de `Θ(n²)` en el caso promedio, mientras que Merge Sort tiene `Θ(n log n)`. En las pruebas se puede observar una diferencia que va aumentando conforme crece `n`, lo cual coincide con lo esperado.
+
+Sin embargo, lo importante para esta comparación es el comportamiento de las curvas y la diferencia que aparece cuando el tamaño de entrada aumenta.
