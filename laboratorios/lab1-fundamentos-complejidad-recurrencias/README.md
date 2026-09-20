@@ -56,3 +56,23 @@ El escenario A corresponde a el caso promedio debido a que las entradas/registro
 El escenario B corresponde al mejor caso ya que el 98% del total de la lista, es decir la mayor parte de los registros vienen organizados por el índice de riesgo y solo se pretende organizar el 2% restante de los registros
 El escenario C corresponde a el peor de los casos ya que los datos vienen en el orden inverso (de menor a mayor riesgo de índice) en el que deben estar organizados (de mayor a menor). Por tanto, el algoritmo debe operar sobre todos los datos para compararlos y desplazarlos.
 
+## 3.2 — Demostración experimental
+
+![Comparaciones de Insertion Sort por escenario](graficas/parte3_comparaciones.png)
+
+![Tiempo de ejecución de Insertion Sort por escenario](graficas/parte3_tiempo.png)
+
+# Análisis de los resultados
+
+Al revisar los resultados obtenidos, se puede ver que el comportamiento de los tres escenarios fue diferente, aunque en general si logramos coincidir con lo que había planteado en la predicción de la sección 3.1.
+
+El escenario C fue el que presentó el mayor número de comparaciones en todos los tamaños (n) probados. Por ejemplo, cuando n = 6400, realizó 20.476.800 comparaciones y tardó aproximadamente 4,13 segundos. Esto tiene bastante sentido porque los datos llegan completamente en el orden contrario al que necesita el algoritmo, por lo que Insertion Sort tiene que recorrer y desplazar una gran cantidad de elementos.
+
+Por otro lado, el escenario B fue el que tuvo el menor costo. Para n = 6400 solamente realizó 10.277 comparaciones y tardó aproximadamente 0,0028 segundos. Esto se relaciona con que el 98 % de los datos ya se encuentra ordenado, por lo que el algoritmo casi no necesita hacer comparaciones. Aunque este escenario no representa el mejor caso teórico de Insertion Sort, sí fue el mejor de los tres escenarios evaluados, representando así la concidencia en que es el mejor caso de los 3.
+
+El escenario A quedó entre los otros dos. Para n = 6400 realizó 10.276.753 comparaciones y tuvo un tiempo de aproximadamente 2,02 segundos. Al ser un conjunto de datos aleatorio, su comportamiento fue más costoso que B, pero menor que C. Por esta razón, dentro de los escenarios planteados, A es el que más se acerca al comportamiento que podríamos asociar con un caso promedio.
+
+Al comparar estos resultados con mi predicción inicial, se puede decir que fue acertada. Antes de realizar las pruebas había pensado que C sería el escenario más costoso, B el que necesitaría menos trabajo y A estaría en un punto intermedio. Los resultados mostraron justamente ese comportamiento.
+
+También se puede notar algo importante en la gráfica de comparaciones: cuando aumenta el tamaño de los datos, la diferencia entre los escenarios se vuelve mucho más grande. Esto es especialmente visible entre B y C, ya que mientras B aumenta de manera mucho más lenta, C pasa de 4.950 comparaciones con 100 elementos a más de 20 millones con 6.400 elementos.
+
