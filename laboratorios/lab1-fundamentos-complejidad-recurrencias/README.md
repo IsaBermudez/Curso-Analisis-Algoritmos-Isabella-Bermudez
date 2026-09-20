@@ -58,9 +58,11 @@ El escenario C corresponde a el peor de los casos ya que los datos vienen en el 
 
 ## 3.2 — Demostración experimental
 
+![Comparaciones de Insertion Sort por escenario](graficas/parte3_comparaciones.png)
 
+![Tiempo de ejecución de Insertion Sort por escenario](graficas/parte3_tiempo.png)
 
-# Análisis de los resultados
+## Análisis de los resultados
 
 Al revisar los resultados obtenidos, se puede ver que el comportamiento de los tres escenarios fue diferente, aunque en general si logramos coincidir con lo que había planteado en la predicción de la sección 3.1.
 
@@ -171,7 +173,9 @@ La diferencia principal es que Insertion Sort puede aprovechar una entrada que y
 
 ## 4.2 — Validación experimental
 
-# Análisis de los resultados
+![Comparación de tiempo entre Insertion Sort y Merge Sort](graficas/parte4_tiempo.png)
+
+## Análisis de los resultados
 
 Al comparar los tiempos obtenidos para los dos algoritmos, al principio la diferencia no parece ser tan grande. Esto se puede ver en los primeros tamaños, donde los tiempos de Insertion Sort y Merge Sort todavía están relativamente cerca. Sin embargo, a medida que aumenta la cantidad de datos, la diferencia empieza a ser mucho más evidente.
 
