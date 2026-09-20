@@ -62,7 +62,7 @@ El escenario C corresponde a el peor de los casos ya que los datos vienen en el 
 
 ![Tiempo de ejecución de Insertion Sort por escenario](graficas/parte3_tiempo.png)
 
-## Análisis de los resultados
+# Análisis de los resultados
 
 Al revisar los resultados obtenidos, se puede ver que el comportamiento de los tres escenarios fue diferente, aunque en general si logramos coincidir con lo que había planteado en la predicción de la sección 3.1.
 
@@ -175,7 +175,7 @@ La diferencia principal es que Insertion Sort puede aprovechar una entrada que y
 
 ![Comparación de tiempo entre Insertion Sort y Merge Sort](graficas/parte4_tiempo.png)
 
-## Análisis de los resultados
+# Análisis de los resultados
 
 Al comparar los tiempos obtenidos para los dos algoritmos, al principio la diferencia no parece ser tan grande. Esto se puede ver en los primeros tamaños, donde los tiempos de Insertion Sort y Merge Sort todavía están relativamente cerca. Sin embargo, a medida que aumenta la cantidad de datos, la diferencia empieza a ser mucho más evidente.
 
@@ -190,3 +190,18 @@ Para el caso de Tamiza, los resultados de esta prueba muestran que Merge Sort ti
 El resultado también coincide con lo calculado en la sección 4.1. Allí obtuvimos que Insertion Sort tiene una complejidad de `Θ(n²)` en el caso promedio, mientras que Merge Sort tiene `Θ(n log n)`. En las pruebas se puede observar una diferencia que va aumentando conforme crece `n`, lo cual coincide con lo esperado.
 
 Sin embargo, lo importante para esta comparación es el comportamiento de las curvas y la diferencia que aparece cuando el tamaño de entrada aumenta.
+
+## 4.3 — Concepto técnico a la Secretaría de Salud
+
+Luego de las pruebas realizadas para Tamiza utilizaría Merge Sort como algoritmo de ordenamiento. La razón principal es que no podemos depender unicamente de que los registros lleguen en un orden determinado. En las pruebas de la Parte 3 se pudo ver que Insertion Sort cambia considerablemente tanto su tiempo como sus comparaciones dependiendo del orden de los datos. Por ejemplo, con `n = 6400`, el escenario B realizó solamente 10.277 comparaciones, mientras que el escenario C llegó a 20.476.800. Esto significa que si en algún momento cambia la forma en que llegan los registros, el tiempo del proceso también puede cambiar notablemente. Como el equipo no considera mantener tres implementaciones diferentes, considero más conveniente utilizar un algoritmo cuyo comportamiento sea más estable frente a estos cambios.
+
+Esta decisión también se apoya en la comparación realizada en la Parte 4. Con 6.400 registros del escenario A, Insertion Sort tardó aproximadamente 2,24 segundos, mientras que Merge Sort tardó aproximadamente 0,040 segundos. Sin embargo, es importante destacar que la diferencia  va variar notablemente segun aumenten la cantidad de registros a lo largo del tiempo. Por lo anterior, para un sistema que actualmente trabaja con una cantidad mucho mayor de registros, el comportamiento observado en las pruebas es un punto importante para tomar la decisión.
+
+Ahora, si llevamos estos resultados al tamaño real de Tamiza, que es de aproximadamente 1.200.000 registros, tenemos que hacer una estimación. Para Insertion Sort tomamos como referencia los 2,24 segundos obtenidos con la mayor cantidad de registros (6400) y usamos el crecimiento cuadrático obtenido en la sección 4.1. La cantidad de registros aumenta 187,5 veces, por lo que el tiempo estimado sería de aproximadamente 78.764 segundos, es decir, cerca de 21,9 horas. La proyección realizada justifica de gran manera que ese tiempo no se encuentra dentro del rango establecido para realizar el ordenamiento.
+
+Para Merge Sort hacemos una estimación diferente, ya que su crecimiento corresponde a `n log n`. Tomando como referencia los aproximadamente 0,040 segundos obtenidos con 6.400 registros, el tiempo estimado para 1.200.000 registros sería de alrededor de 12 segundos. Este valor es una extrapolación y no significa que hayamos ejecutado el algoritmo con 1.200.000 registros en esta prueba. Lo importante es que la diferencia entre ambos crecimientos es grande y la estimación de Merge Sort queda muy por debajo de la ventana de cuatro horas.
+
+Con el popósito de responder a la propuesta de utilizar un servidor con el doble de velocidad, considero que esto podría reducir el tiempo de ejecución, pero no resolvería el problema de fondo. Si tomamos como referencia el peor escenario medido para Insertion Sort, que tardó aproximadamente 4,13 segundos con 6.400 registros, duplicar la velocidad del servidor de forma ideal podría reducir ese tiempo aproximadamente a la mitad. Sin embargo, al extrapolar el crecimiento del algoritmo hasta los 1.200.000 registros, seguiríamos teniendo un tiempo muy superior a las cuatro horas. El problema, entonces, no es solamente que el servidor sea lento, sino la cantidad de trabajo que debe realizar el algoritmo cuando aumenta el número de registros.
+
+Por último, también tendría en cuenta que Merge Sort necesita utilizar memoria adicional durante el proceso de división y combinación de las listas. Esto significa que antes de llevarlo a producción habría que revisar que la infraestructura tenga memoria suficiente para manejar el volumen real de Tamiza.
+
