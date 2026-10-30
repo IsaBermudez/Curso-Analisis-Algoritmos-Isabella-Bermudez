@@ -61,7 +61,7 @@ Muy buen trabajo: el laboratorio está completo, ordenado y bien sustentado.
 - Enlaza `subarreglo.py`, `pruebas.py` y `medicion.py`, incluye instrucciones de reproducción y tiene cuatro commits descriptivos.
 
 ## ¿El código funciona?
-Sí. Las pruebas pasan, ambos algoritmos dan la misma suma en cientos de listas aleatorias que probé y la medición genera la gráfica sin errores.
+Sí. Las pruebas pasan, ambos algoritmos dan la misma suma en cientos de listas aleatorias y la medición genera la gráfica sin errores.
 
 ## Para el próximo laboratorio
 - Pruebe con listas más largas, además de las cortas.
